@@ -1,5 +1,5 @@
 
-Additional requirement to tf-pose-estimation requirement:
+Additional requirement to tf-pose-estimation requirements:
 ```bash
 pip install falcon
 ```
