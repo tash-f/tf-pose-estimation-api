@@ -1,3 +1,37 @@
+
+Additional requirement to tf-pose-estimation requirement:
+```bash
+pip install falcon
+```
+
+You can run the API using any WSGI server, such as uWSGI or Gunicorn. For example:
+```bash
+pip install gunicorn
+gunicorn run_api:app
+```
+
+Then test the API endpoint using http:
+```bash
+http POST XXX.XXX.XXX.XXX:8000/poseinference Content-Type:image/jpeg < {test_image_name}.jpg > pose_inference.png
+```
+
+Or using python code:
+
+```python
+import requests
+
+url = "http://XXX.XXX.XXX.XXX:8000/poseinference"
+
+payload = open('test_image.jpg','rb')
+headers = {
+  'Content-Type': 'image/jpeg'
+}
+
+response = requests.request("POST", url, headers=headers, data = payload)
+```
+
+Below is the tf-pose-estimation README for installation steps
+
 # tf-pose-estimation
 
 'Openpose', human pose estimation algorithm, have been implemented using Tensorflow. It also provides several variants that have some changes to the network structure for **real-time processing on the CPU or low-power embedded devices.**
